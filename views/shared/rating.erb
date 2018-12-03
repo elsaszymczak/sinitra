@@ -1,0 +1,12 @@
+<div class="rating">
+  <% rating = post[:rating].to_i %>
+  <% count = 0 %>
+  <% 5.times do %>
+    <% if rating > count %>
+      <i class="fas fa-star"></i>
+    <% else %>
+      <i class="far fa-star"></i>
+    <% end %>
+    <% count += 1 %>
+  <% end %>
+</div>

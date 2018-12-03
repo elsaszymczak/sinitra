@@ -1,0 +1,15 @@
+<h2>Add a new post</h2>
+
+<form action="/posts" method="POST">
+  <label for="title">Title</label>
+  <input type="text" name="title" id="title" value="<%= params[:title] %>"/>
+
+  <label for="content">Content</label>
+  <input type="text" name="content" id="content" value="<%= params[:content] %>"/>
+
+
+  <label for="photo">Photo</label>
+  <input type="text" name="photo" id="photo" value="<%= params[:photo] %>"/>
+
+  <input class="button" type="submit" value="Add"/>
+</form>

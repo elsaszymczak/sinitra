@@ -1,0 +1,20 @@
+
+<div class="container">
+  <div id='banner-post' class="banner banner-small">
+    <h1><%= @post[:title] %></h1>
+    <img src="<%= @post[:photo] ? @post[:photo] : 'https://source.unsplash.com/random' %>" alt="post photo">
+  </div>
+</div>
+
+<div class="container">
+  <div class="post-content">
+    <p><%= @post[:content] %></p>
+    <% if @comments %>
+      <div class="reviews">
+        <%= erb :'shared/reviews', locals: { comments: @comments } %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
