@@ -48,19 +48,5 @@ post "/posts/:post_id/comments" do
     erb :post
   end
 
-  @post.rating = (@post.rating + @comment.rating) / @post.comments.count
-  @post.update
 end
-
-
-# # Post upvote
-# put '/posts/:id' do
-#   @post = Post.find(params[:id])
-#   post.rating += 1
-#   post.save
-
-#   redirect to('/')
-# end
-
-# rating + new_rating / rating.count
 
