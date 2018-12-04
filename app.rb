@@ -2,10 +2,14 @@ require "sinatra"
 require "sinatra/reloader" if development?
 require_relative "database"
 require 'pry-byebug'
+require_relative "config/application"
+
+set :views, (proc { File.join(root, "app/views") })
+
 
 
 get "/" do
-  @posts = DB
+  @posts = Post.all
   erb :posts
 end
 
@@ -14,27 +18,41 @@ get "posts/new" do
 end
 
 get "/posts/:id" do
-  id = params[:id].to_i
-  @post = DB[id]
-
-  @comments = COMMENTS[id]
+  @post = Post.find(params[:id])
+  @comment = Comment.new
 
   erb :post
 end
 
 post "/posts" do
-  @posts = DB
-  @post = {
-    title: params[:title],
-    content: params[:content],
-    photo: params[:photo]
-  }
+  @post = Post.new()
+  @post.title = params[:title]
+  @post.content = params[:content]
+  @post.photo = params[:photo]
 
-  if @posts << @post
+  if @post.save
     redirect to('/')
   else
     erb :new_post
   end
 end
+
+post "/posts/:post_id/comments" do
+  @post = Post.find(params[:post_id])
+  @comment = Comment.new
+  @comment.content = params[:content]
+  @comment.post = @post
+  @comment.save
+
+  @post_id = params[:post_id]
+
+  if @comment.save
+    redirect to ("/posts/#{@post_id}")
+  else
+    erb :post
+  end
+end
+
+# /monstas?name=#{@name}"
 
 

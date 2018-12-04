@@ -1,0 +1,8 @@
+<form action="/posts/<%= post.id %>/comments" method="POST">
+  <div class="form-group">
+    <label for="content">content</label>
+    <input class= "form-control" type="text" name="content" id="content" value="<%= params[:content] %>"/>
+  </div>
+
+  <input class="button" type="submit" value="Add"/>
+</form>

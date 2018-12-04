@@ -1,0 +1,8 @@
+<h2>What others thought</h2>
+<ul class="comments">
+  <% post.comments.each do |comment| %>
+    <li><%= comment.content %></li>
+  <% end %>
+</ul>
+<h2>Add a review!</h2>
+<%= erb :'shared/new_review', locals: { post: @post, comment: @comment } %>

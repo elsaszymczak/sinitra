@@ -212,9 +212,10 @@ ul {
 }
 
 .button:hover {
-  background-color: #f5e48e;
+  background-color: rgb(50, 50, 50);
   border: none;
   border: solid 1px #f5e48e;
+  color:white;
 }
 
 input:focus {

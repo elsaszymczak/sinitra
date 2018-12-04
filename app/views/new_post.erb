@@ -1,0 +1,21 @@
+<h2>Add a new post</h2>
+
+<form action="/posts" method="POST">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input class= "form-control" type="text" name="title" id="title" value="<%= params[:title] %>"/>
+  </div>
+
+  <div class="form-group">
+
+    <label for="content">Content</label>
+    <input class= "form-control" type="text" name="content" id="content" value="<%= params[:content] %>"/>
+  </div>
+
+  <div class="form-group">
+    <label for="photo">Photo </label>
+    <input class= "form-control" type="text" name="photo" id="photo" value="<%= params[:photo] %>"/>
+  </div>
+
+  <input class="button" type="submit" value="Add"/>
+</form>
