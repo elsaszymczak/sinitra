@@ -1,5 +1,5 @@
-
 <div class="container">
+  <!-- Banner show page -->
   <div id='banner-post' class="banner banner-small">
     <h1><%= @post.title %></h1>
     <img src="<%= @post.photo ? @post.photo : 'https://source.unsplash.com/random' %>" alt="post photo">
@@ -9,10 +9,10 @@
 <div class="container">
   <div class="post-content">
     <p><%= @post.content %></p>
+    <!-- reviews -->
     <% if @post.comments.any? %>
       <div class="reviews">
         <%= erb :'shared/reviews', locals: { post: @post, comments: @comments } %>
-
       </div>
     <% else %>
       <h2>Leave the first review!</h2>

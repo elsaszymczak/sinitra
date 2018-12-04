@@ -1,15 +1,17 @@
+<!--banner home page -->
 <%= erb :'shared/banner' %>
 
 <div class="container">
   <div class="row cards">
+    <!--post index -->
     <% @posts.each do |post| %>
       <div class="col-xs-12 col-sm-6 col-md-4">
         <%= erb :'shared/card', locals: { post: post} %>
       </div>
     <% end %>
   </div>
-
 </div>
+<!--new post -->
 <div class="wrapper wrapper-yellow">
   <div class="container">
     <div class="row">

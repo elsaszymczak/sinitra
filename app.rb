@@ -1,6 +1,5 @@
 require "sinatra"
 require "sinatra/reloader" if development?
-require_relative "database"
 require 'pry-byebug'
 require_relative "config/application"
 
@@ -11,10 +10,6 @@ set :views, (proc { File.join(root, "app/views") })
 get "/" do
   @posts = Post.all
   erb :posts
-end
-
-get "posts/new" do
-  erb :new_post
 end
 
 get "/posts/:id" do
@@ -41,6 +36,7 @@ post "/posts/:post_id/comments" do
   @post = Post.find(params[:post_id])
   @comment = Comment.new
   @comment.content = params[:content]
+  @comment.rating = params[:rating]
   @comment.post = @post
   @comment.save
 
@@ -51,8 +47,20 @@ post "/posts/:post_id/comments" do
   else
     erb :post
   end
+
+  @post.rating = (@post.rating + @comment.rating) / @post.comments.count
+  @post.update
 end
 
-# /monstas?name=#{@name}"
 
+# # Post upvote
+# put '/posts/:id' do
+#   @post = Post.find(params[:id])
+#   post.rating += 1
+#   post.save
+
+#   redirect to('/')
+# end
+
+# rating + new_rating / rating.count
 

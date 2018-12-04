@@ -3,6 +3,10 @@
     <label for="content">content</label>
     <input class= "form-control" type="text" name="content" id="content" value="<%= params[:content] %>"/>
   </div>
+   <div class="form-group">
+    <label for="rating">rating</label>
+    <input class= "form-control" type="number"  min="0" max="5" placeholder="0-5" name="rating" id="rating" value="<%= params[:rating] %>"/>
+  </div>
 
   <input class="button" type="submit" value="Add"/>
 </form>

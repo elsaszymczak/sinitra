@@ -1,8 +1,24 @@
+<!-- reviews index -->
 <h2>What others thought</h2>
 <ul class="comments">
   <% post.comments.each do |comment| %>
-    <li><%= comment.content %></li>
+    <li>
+        <%= comment.content %>
+        <div class="rating">
+          <% comment.rating ? rating = comment.rating : rating = 0 %>
+          <% count = 0 %>
+          <% 5.times do %>
+            <% if rating > count %>
+              <i class="fas fa-star"></i>
+            <% else %>
+              <i class="far fa-star"></i>
+            <% end %>
+            <% count += 1 %>
+          <% end %>
+        </div>
+    </li>
   <% end %>
 </ul>
+<!-- new review -->
 <h2>Add a review!</h2>
 <%= erb :'shared/new_review', locals: { post: @post, comment: @comment } %>
